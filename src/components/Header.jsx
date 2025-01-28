@@ -1,8 +1,17 @@
+import { useContext } from 'react';
+
 import Button from './UI/Button.jsx';
+import CartContext from '../store/CartContext.jsx';
 
 import logoImg from '../assets/logo.jpg';
 
 export default function Header() {
+  const cartCtx = useContext(CartContext);
+
+  const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
+    return totalCartItems + item.quantity + 1;
+  }, 0);
+
   return (
     <header id="main-header">
       <div id="title">
