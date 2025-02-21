@@ -1,4 +1,5 @@
 import MealItem from './MealItem.jsx';
+import Error from './Error.jsx';
 
 import useHttp from '../hooks/useHttp.js';
 
@@ -13,6 +14,10 @@ export default function Meals() {
 
   if (isLoading) {
     return <p className="center">Fetching meals...</p>;
+  }
+
+  if (error) {
+    return <Error title="Failed to fetch meals" message={error} />;
   }
 
   return (
